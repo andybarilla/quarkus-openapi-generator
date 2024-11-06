@@ -70,6 +70,8 @@ public class QuarkusJavaClientCodegen extends JavaClientCodegen {
         supportingFiles.clear();
 
         Boolean enableSecurityGeneration = (Boolean) this.additionalProperties.get("enable-security-generation");
+        Boolean generateApis = (Boolean) this.additionalProperties.getOrDefault("generate-apis", true);
+        Boolean generateModels = (Boolean) this.additionalProperties.getOrDefault("generate-models", true);
 
         if (enableSecurityGeneration == null || enableSecurityGeneration) {
             if (ProcessUtils.hasHttpBasicMethods(this.openAPI) ||
@@ -92,10 +94,14 @@ public class QuarkusJavaClientCodegen extends JavaClientCodegen {
         }
 
         apiTemplateFiles.clear();
-        apiTemplateFiles.put("api.qute", ".java");
+        if (Boolean.TRUE.equals(generateApis)) {
+            apiTemplateFiles.put("api.qute", ".java");
+        }
 
         modelTemplateFiles.clear();
-        modelTemplateFiles.put("model.qute", ".java");
+        if (Boolean.TRUE.equals(generateModels)) {
+            modelTemplateFiles.put("model.qute", ".java");
+        }
     }
 
     public String authFileFolder() {
