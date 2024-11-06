@@ -70,8 +70,8 @@ public class QuarkusJavaClientCodegen extends JavaClientCodegen {
         supportingFiles.clear();
 
         Boolean enableSecurityGeneration = (Boolean) this.additionalProperties.get("enable-security-generation");
-        Boolean generateApis = (Boolean) this.additionalProperties.getOrDefault("generate-apis", true);
-        Boolean generateModels = (Boolean) this.additionalProperties.getOrDefault("generate-models", true);
+        Boolean generateApis = (Boolean) this.additionalProperties.getOrDefault("generate-apis", Boolean.TRUE);
+        Boolean generateModels = (Boolean) this.additionalProperties.getOrDefault("generate-models", Boolean.TRUE);
 
         if (enableSecurityGeneration == null || enableSecurityGeneration) {
             if (ProcessUtils.hasHttpBasicMethods(this.openAPI) ||
@@ -94,12 +94,12 @@ public class QuarkusJavaClientCodegen extends JavaClientCodegen {
         }
 
         apiTemplateFiles.clear();
-        if (Boolean.TRUE.equals(generateApis)) {
+        if (generateApis) {
             apiTemplateFiles.put("api.qute", ".java");
         }
 
         modelTemplateFiles.clear();
-        if (Boolean.TRUE.equals(generateModels)) {
+        if (generateModels) {
             modelTemplateFiles.put("model.qute", ".java");
         }
     }
