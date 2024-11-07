@@ -21,6 +21,8 @@ class OpenApiConfigValidatorTest {
             "quarkus.openapi-generator.codegen.spec.spec_yaml.type-mappings.UUID=String",
             "quarkus.openapi-generator.codegen.spec.spec_yaml.generate-apis=false",
             "quarkus.openapi-generator.codegen.spec.spec_yaml.generate-models=false",
+            "quarkus.openapi-generator.codegen.spec.spec_yaml.generate-apis=true",
+            "quarkus.openapi-generator.codegen.spec.spec_yaml.generate-models=true",
     })
     void test_known_configs_ok(String validConfiguration) {
         assertThatCode(() -> OpenApiConfigValidator.validateInputConfiguration(List.of(validConfiguration)))
