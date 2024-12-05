@@ -67,6 +67,8 @@ public class CodegenConfig extends GlobalCodegenConfig {
         USE_FIELD_NAME_IN_PART_FILENAME("use-field-name-in-part-filename"),
         ADDITIONAL_PROPERTIES_AS_ATTRIBUTE("additional-properties-as-attribute"),
         ADDITIONAL_REQUEST_ARGS("additional-request-args"),
+        GENERATE_APIS("generate-apis"),
+        GENERATE_MODELS("generate-models"),
         BEAN_VALIDATION("use-bean-validation");
 
         private final String name;
